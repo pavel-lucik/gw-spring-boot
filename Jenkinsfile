@@ -50,7 +50,7 @@ pipeline {
                     protocol: 'http',
                     nexusUrl: 'localhost:8081',
                     groupId: 'java',
-                    version: 'build-${BUILD_DISPLAY_NAME}',
+                    version: 'build-${BUILD_NUMBER}',
                     repository: 'maven-public1',
                     credentialsId: 'nexus-credentials',
                     artifacts: [
