@@ -5,7 +5,7 @@ pipeline {
       // Install the Maven version configured as "M3" and add it to the path.
       maven "M3"
    }
-   
+
     // environment {
     // // This can be nexus3 or nexus2
     // NEXUS_VERSION = "nexus3"
@@ -20,17 +20,19 @@ pipeline {
     // }
 
    stages {
-        stage('Build') {
+        stage('CHECKOUT') {
             steps {
-                // Get some code from a GitHub repository
                 git 'https://github.com/pavel-lucik/gw-spring-boot.git'
-    
-                // Run Maven on a Unix agent.
+            }
+        }
+        stage('BUILD') {
+            steps {
                 sh "mvn clean install -f ./spring-boot-tests/spring-boot-smoke-tests/spring-boot-smoke-test-web-ui/pom.xml"
-    
+            }
+        }
                 // To run Maven on a Windows agent, use
                 // bat "mvn -Dmaven.test.failure.ignore=true clean package"
-                }
+
 
         //  post {
         //     // If Maven was able to run the tests, even if some of the test
@@ -39,9 +41,9 @@ pipeline {
         //       archiveArtifacts 'spring-boot-tests/spring-boot-smoke-tests/spring-boot-smoke-test-web-ui/target/*.jar'
         //         }
         //     }
-        }
-      
-        stage("publish to nexus") {
+
+
+        stage("UPLOAD ARTIFACT") {
             steps {
                 nexusArtifactUploader(
                     nexusVersion: 'nexus3',
