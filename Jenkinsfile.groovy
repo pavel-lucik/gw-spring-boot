@@ -22,7 +22,7 @@ properties([
 node () {
     
 	ansiColor('xterm') {
-            printlnGreen "ttexttt"
+            //printlnGreen "ttexttt"
 	}
 	
     stage ("average") {
@@ -57,6 +57,6 @@ node(){
     }
 }
 	
-def printlnGreen(text) {
-    println "\033[1;4;37;42m$text\033[0m"
-}
+//def printlnGreen(text) {
+    //println "\033[1;4;37;42m$text\033[0m"
+//}
