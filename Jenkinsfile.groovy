@@ -38,7 +38,7 @@ node () {
     }
 }
 
-input("Please approve deploy to...")
+//input("Please approve deploy to...")
 
 node(){
     stage ("upload artifact"){
