@@ -21,6 +21,9 @@ properties([
 
 node () {
     
+	ansiColor('xterm') {
+            printlnGreen "ttexttt"
+	
     stage ("average") {
         sh 'uptime'
         deleteDir()
@@ -30,8 +33,7 @@ node () {
     stage ("git") {
         //withCredentials([usernamePassword(credentialsId: 'd1188926-b2e6-41b1-a7fa-1adc494fa6fc', passwordVariable: 'password', usernameVariable: 'username')]) {
         //sh 'git clone https://$username:$password@github.com/pavel-lucik/gw-spring-boot.git'}
-		ansiColor('xterm') {
-            printlnGreen "ttexttt"
+		
 		checkout scm
 		sh 'ls -lh'
     }    
