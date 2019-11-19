@@ -45,8 +45,9 @@ node () {
 
 node(){
     stage ("upload artifact"){
-        def workDir = sh(returnStdout: true, script: "pwd").trim()
-        sh "cd $workDir && cd gw-spring-boot/spring-boot-tests/spring-boot-smoke-tests/spring-boot-smoke-test-web-ui && ls -lh"
+        //def workDir = sh(returnStdout: true, script: "pwd").trim()
+        //sh "cd $workDir && cd gw-spring-boot/spring-boot-tests/spring-boot-smoke-tests/spring-boot-smoke-test-web-ui && ls -lh"
+		sh "cd spring-boot-tests/spring-boot-smoke-tests/spring-boot-smoke-test-web-ui && ls -lh"
         archiveArtifacts artifacts: "**/target/*.jar", fingerprint: true
     }
 }
