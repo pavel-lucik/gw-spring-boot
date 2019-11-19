@@ -30,6 +30,8 @@ node () {
     stage ("git") {
         //withCredentials([usernamePassword(credentialsId: 'd1188926-b2e6-41b1-a7fa-1adc494fa6fc', passwordVariable: 'password', usernameVariable: 'username')]) {
         //sh 'git clone https://$username:$password@github.com/pavel-lucik/gw-spring-boot.git'}
+		ansiColor('xterm') {
+            printlnGreen "ttexttt"
 		checkout scm
 		sh 'ls -lh'
     }    
@@ -50,4 +52,8 @@ node(){
 		sh "cd spring-boot-tests/spring-boot-smoke-tests/spring-boot-smoke-test-web-ui && ls -lh"
         archiveArtifacts artifacts: "**/target/*.jar", fingerprint: true
     }
+}
+	
+def printlnGreen(text) {
+    println "\033[1;4;37;42m$text\033[0m"
 }
