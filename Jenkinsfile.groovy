@@ -35,8 +35,9 @@ node () {
     }    
 
     stage ("pwd and build"){
-        def workDir = sh(returnStdout: true, script: "pwd").trim()
-        sh "cd $workDir && cd gw-spring-boot/spring-boot-tests/spring-boot-smoke-tests/spring-boot-smoke-test-web-ui && ls -lh && mvn clean install"
+        //def workDir = sh(returnStdout: true, script: "pwd").trim()
+        //sh "cd $workDir && cd gw-spring-boot/spring-boot-tests/spring-boot-smoke-tests/spring-boot-smoke-test-web-ui && ls -lh && mvn clean install"
+		sh "cd spring-boot-tests/spring-boot-smoke-tests/spring-boot-smoke-test-web-ui && ls -lh && mvn clean install"
     }
 }
 
