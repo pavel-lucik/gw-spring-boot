@@ -23,6 +23,7 @@ node () {
     
 	ansiColor('xterm') {
             printlnGreen "ttexttt"
+	}
 	
     stage ("average") {
         sh 'uptime'
