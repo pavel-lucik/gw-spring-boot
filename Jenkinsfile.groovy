@@ -28,8 +28,9 @@ node () {
     }
     
     stage ("git") {
-        withCredentials([usernamePassword(credentialsId: 'd1188926-b2e6-41b1-a7fa-1adc494fa6fc', passwordVariable: 'password', usernameVariable: 'username')]) {
-        sh 'git clone https://$username:$password@github.com/pavel-lucik/gw-spring-boot.git'}
+        //withCredentials([usernamePassword(credentialsId: 'd1188926-b2e6-41b1-a7fa-1adc494fa6fc', passwordVariable: 'password', usernameVariable: 'username')]) {
+        //sh 'git clone https://$username:$password@github.com/pavel-lucik/gw-spring-boot.git'}
+		checkout scm
     }    
 
     stage ("pwd and build"){
