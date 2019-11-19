@@ -1,6 +1,6 @@
 // properties([pipelineTriggers([cron('*/5 * * * *')])])
 properties([
-	buildDiscarder(
+    buildDiscarder(
         logRotator(
             artifactDaysToKeepStr: '14',
             artifactNumToKeepStr: '5',
@@ -36,7 +36,7 @@ properties([
 
 node () {
 	
-    currentBuild.displayName = "#${BUILD_NUMBER} text1 ${BRANCH}"
+    currentBuild.displayName = "#${BUILD_NUMBER} text1 ${params.BRANCH}"
 	ansiColor('xterm') {
             //printlnGreen "ttexttt"
 	}
