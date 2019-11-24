@@ -6,19 +6,6 @@ pipeline {
       maven "M3"
    }
 
-    // environment {
-    // // This can be nexus3 or nexus2
-    // NEXUS_VERSION = "nexus3"
-    // // This can be http or https
-    // NEXUS_PROTOCOL = "http"
-    // // Where your Nexus is running
-    // NEXUS_URL = "localhost:8081"
-    // // Repository where we will upload the artifact
-    // NEXUS_REPOSITORY = "maven-public"
-    // // Jenkins credential id to authenticate to Nexus OSS
-    // NEXUS_CREDENTIAL_ID = "nexus-credentials"
-    // }
-
    stages {
         stage('CHECKOUT') {
             steps {
@@ -30,8 +17,6 @@ pipeline {
                 sh "mvn clean install -f ./spring-boot-tests/spring-boot-smoke-tests/spring-boot-smoke-test-web-ui/pom.xml"
             }
         }
-                // To run Maven on a Windows agent, use
-                // bat "mvn -Dmaven.test.failure.ignore=true clean package"
 
 
         //  post {
@@ -60,6 +45,13 @@ pipeline {
                          type: 'jar']
                     ]
                 )
+            }
+        }
+
+        stage ('DEPLOY') {
+            steps {
+                build job: 'deploy_jar_QA'
+                build job: 'deploy_jar_CI'
             }
         }
     }
