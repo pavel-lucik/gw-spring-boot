@@ -15,18 +15,9 @@ pipeline {
         stage('BUILD') {
             steps {
                 sh "mvn clean install -f ./spring-boot-tests/spring-boot-smoke-tests/spring-boot-smoke-test-web-ui/pom.xml"
+		sh "echo ${BUILD_NUMBER} > ~/build_number.txt" //to sync build number between main pipeline and QA/CI deployment jobs
             }
         }
-
-
-        //  post {
-        //     // If Maven was able to run the tests, even if some of the test
-        //     // failed, record the test results and archive the jar file.
-        //     success {
-        //       archiveArtifacts 'spring-boot-tests/spring-boot-smoke-tests/spring-boot-smoke-test-web-ui/target/*.jar'
-        //         }
-        //     }
-
 
         stage("UPLOAD ARTIFACT") {
             steps {
